@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A7324277-195A-4EC3-A422-870978D9839F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SimplySocial</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>7081C619-8565-45F4-B0FB-AC10DA119789</key>
+		<string>https://github.com/nsaditya/SimplySocial.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SimplySocial.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>7081C619-8565-45F4-B0FB-AC10DA119789</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/nsaditya/SimplySocial.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>7081C619-8565-45F4-B0FB-AC10DA119789</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>7081C619-8565-45F4-B0FB-AC10DA119789</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SimplySocial</string>
+		</dict>
+	</array>
+</dict>
+</plist>
