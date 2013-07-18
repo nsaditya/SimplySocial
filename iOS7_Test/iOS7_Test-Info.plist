@@ -40,6 +40,19 @@
 			<false/>
 		</dict>
 	</dict>
+	<key>FacebookAppID</key>
+	<string>471236802969805</string>
+	<key>FacebookDisplayName</key>
+	<string>SimplySocial</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb471236802969805</string>
+			</array>
+		</dict>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
