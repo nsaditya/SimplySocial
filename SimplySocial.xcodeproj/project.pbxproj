@@ -43,7 +43,7 @@
 			containerPortal = 6E75F0AF1776272B006D073B /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 6E75F0B61776272B006D073B;
-			remoteInfo = iOS7_Test;
+			remoteInfo = SimplySocial;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -180,7 +180,7 @@
 				6E0D807517972FDF00FCC7FB /* FBLoginViewController.m */,
 			);
 			name = SimplySocial;
-			path = iOS7_Test;
+			path = SimplySocial;
 			sourceTree = "<group>";
 		};
 		6E75F0C11776272B006D073B /* Supporting Files */ = {
@@ -201,7 +201,7 @@
 				6E75F0E31776272B006D073B /* Supporting Files */,
 			);
 			name = SimplySocialTests;
-			path = iOS7_TestTests;
+			path = SimplySocialTests;
 			sourceTree = "<group>";
 		};
 		6E75F0E31776272B006D073B /* Supporting Files */ = {
@@ -229,7 +229,7 @@
 			dependencies = (
 			);
 			name = SimplySocial;
-			productName = iOS7_Test;
+			productName = SimplySocial;
 			productReference = 6E75F0B71776272B006D073B /* SimplySocial.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -247,7 +247,7 @@
 				6E75F0E11776272B006D073B /* PBXTargetDependency */,
 			);
 			name = SimplySocialTests;
-			productName = iOS7_TestTests;
+			productName = SimplySocialTests;
 			productReference = 6E75F0DB1776272B006D073B /* SimplySocialTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -443,8 +443,8 @@
 					"$(SRCROOT)/../../../../Documents/FacebookSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iOS7_Test/SimplySocial-Prefix.pch";
-				INFOPLIST_FILE = "iOS7_Test/SimplySocial-Info.plist";
+				GCC_PREFIX_HEADER = "SimplySocial/SimplySocial-Prefix.pch";
+				INFOPLIST_FILE = "SimplySocial/SimplySocial-Info.plist";
 				PRODUCT_NAME = SimplySocial;
 				WRAPPER_EXTENSION = app;
 			};
@@ -460,8 +460,8 @@
 					"$(SRCROOT)/../../../../Documents/FacebookSDK",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iOS7_Test/SimplySocial-Prefix.pch";
-				INFOPLIST_FILE = "iOS7_Test/SimplySocial-Info.plist";
+				GCC_PREFIX_HEADER = "SimplySocial/SimplySocial-Prefix.pch";
+				INFOPLIST_FILE = "SimplySocial/SimplySocial-Info.plist";
 				PRODUCT_NAME = SimplySocial;
 				WRAPPER_EXTENSION = app;
 			};
@@ -470,19 +470,19 @@
 		6E75F0F01776272C006D073B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iOS7_Test.app/iOS7_Test";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SimplySocial.app/SimplySocial";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(SYSTEM_APPS_DIR)/Xcode5-DP.app/Contents/Developer/Library/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iOS7_Test/iOS7_Test-Prefix.pch";
+				GCC_PREFIX_HEADER = "SimplySocial/SimplySocial-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "iOS7_TestTests/SimplySocialTests-Info.plist";
+				INFOPLIST_FILE = "SimplySocialTests/SimplySocialTests-Info.plist";
 				PRODUCT_NAME = SimplySocialTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -492,15 +492,15 @@
 		6E75F0F11776272C006D073B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iOS7_Test.app/iOS7_Test";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SimplySocial.app/SimplySocial";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(SYSTEM_APPS_DIR)/Xcode5-DP.app/Contents/Developer/Library/Frameworks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iOS7_Test/iOS7_Test-Prefix.pch";
-				INFOPLIST_FILE = "iOS7_TestTests/SimplySocialTests-Info.plist";
+				GCC_PREFIX_HEADER = "SimplySocial/SimplySocial-Prefix.pch";
+				INFOPLIST_FILE = "SimplySocialTests/SimplySocialTests-Info.plist";
 				PRODUCT_NAME = SimplySocialTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
