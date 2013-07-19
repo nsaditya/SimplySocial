@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FBLoginViewController.h"
 
-@interface FacebookViewController : UIViewController
+@interface FacebookViewController : UIViewController <FBLoginViewControllerDelegate>
 
 @property (strong, nonatomic) id detailItem;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 
-- (void)openSession;
 
 @end

@@ -25,7 +25,7 @@
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     //UIViewController *vc = [
     FBLoginViewController* loginViewController = [sb instantiateViewControllerWithIdentifier:@"FBLoginControllerID"];
-
+    loginViewController.delegate = self;
     //[[FBLoginViewController alloc]initWithNibName:@"FBLoginViewController" bundle:nil];
     [self presentViewController:loginViewController animated:NO completion:nil];
 }
@@ -34,8 +34,11 @@
 {
     // Update the user interface for the detail item.
     // See if the app has a valid token for the current state.
+    NSLog(FBSession.activeSession.debugDescription);
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
         // To-do, show logged in view
+        NSLog(@"FB session status is FBSessionStateCreatedTokenLoaded");
+        
     } else {
         // No, display the login page.
         [self showLoginView];
@@ -60,10 +63,12 @@
                       state:(FBSessionState) state
                       error:(NSError *)error
 {
+    UIViewController *topViewController =
+    [self.navigationController topViewController];
     switch (state) {
         case FBSessionStateOpen: {
-            UIViewController *topViewController =
-            [self.navigationController topViewController];
+            NSLog(@"FB Session state is Open");
+            
             if ([[topViewController presentedViewController]
                  isKindOfClass:[FBLoginViewController class]]) {
                 [topViewController dismissViewControllerAnimated:NO completion:nil];
@@ -71,10 +76,16 @@
         }
             break;
         case FBSessionStateClosed:
+                        NSLog(@"FB Session state is Closed");
         case FBSessionStateClosedLoginFailed:
+                        NSLog(@"FB Session state is ClosedLoginFailed");
             // Once the user has logged in, we want them to
             // be looking at the root view.
-            [self.navigationController popToRootViewControllerAnimated:NO];
+            if ([[topViewController presentedViewController]
+                 isKindOfClass:[FBLoginViewController class]]) {
+                [topViewController dismissViewControllerAnimated:NO completion:nil];
+            }
+            //[self.navigationController popToRootViewControllerAnimated:NO];
             
             [FBSession.activeSession closeAndClearTokenInformation];
             
@@ -95,10 +106,15 @@
     }
 }
 
-- (void)openSession
+- (void)openFBSession
 {
     NSLog(@"Inside FacebookViewController:openSession");
-    [FBSession openActiveSessionWithReadPermissions:nil
+    NSArray *readPermissions =
+    [NSArray arrayWithObjects:@"email", @"user_photos", @"friends_photos", @"user_about_me", @"friends_about_me", @"user_activities", @"friends_activities",@"user_birthday",@"friends_birthday",@"user_checkins",@"friends_checkins",@"user_education_history",@"friends_education_history",@"friends_events",@"user_events",@"user_groups",@"friends_groups",@"user_hometown",@"friends_hometown",@"user_interests",@"friends_interests",@"user_likes",@"friends_likes",@"user_notes",@"friends_notes",@"user_online_presence",@"friends_online_presence",@"user_interests",@"friends_interests",@"user_likes",@"friends_likes",@"user_religion_politics",@"friends_religion_politics",@"user_status",@"friends_status",@"user_subscriptions",@"friends_subscriptions",@"user_videos",@"friends_videos",@"user_website",@"friends_website",@"user_work_history",@"friends_work_history",@"read_friendlists",@"read_mailbox",@"read_requests",@"read_stream",@"read_insights",@"xmpp_login", nil];
+    
+    
+    
+    [FBSession openActiveSessionWithReadPermissions:readPermissions
                                        allowLoginUI:YES
                                   completionHandler:
      ^(FBSession *session,

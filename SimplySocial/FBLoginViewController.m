@@ -41,6 +41,7 @@
         [self.loadingInd setHidden:FALSE];
         [self.loadingInd startAnimating];
         
-    [(FacebookViewController *)[self parentViewController] openSession];
+    [self.delegate openFBSession];
+    //[self dismissViewControllerAnimated:NO completion:nil];
 }
 @end
