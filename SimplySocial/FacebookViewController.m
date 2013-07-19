@@ -7,7 +7,6 @@
 //
 
 #import "FacebookViewController.h"
-#import <FacebookSDK/FacebookSDK.h>
 #import "FBLoginViewController.h"
 
 @interface FacebookViewController ()
@@ -38,8 +37,18 @@
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
         // To-do, show logged in view
         NSLog(@"FB session status is FBSessionStateCreatedTokenLoaded");
+        [FBSession.activeSession openWithCompletionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+            NSLog(@"Finished opening login session, with state: %d", status);
+        }];
+        if (FBSession.activeSession.isOpen) {
+            [self populateUserDetails];
+        }
         
-    } else {
+    } else if (FBSession.activeSession.isOpen) {
+        [self populateUserDetails];
+    }
+    
+    else {
         // No, display the login page.
         [self showLoginView];
     }
@@ -72,6 +81,7 @@
             if ([[topViewController presentedViewController]
                  isKindOfClass:[FBLoginViewController class]]) {
                 [topViewController dismissViewControllerAnimated:NO completion:nil];
+                [self configureView];
             }
         }
             break;
@@ -88,6 +98,7 @@
             //[self.navigationController popToRootViewControllerAnimated:NO];
             
             [FBSession.activeSession closeAndClearTokenInformation];
+            [self fbResync];
             
             [self showLoginView];
             break;
@@ -106,6 +117,26 @@
     }
 }
 
+-(void)fbResync
+{
+    ACAccountStore *accountStore;
+    ACAccountType *accountTypeFB;
+    if ((accountStore = [[ACAccountStore alloc] init]) && (accountTypeFB = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook] ) ){
+        
+        NSArray *fbAccounts = [accountStore accountsWithAccountType:accountTypeFB];
+        id account;
+        if (fbAccounts && [fbAccounts count] > 0 && (account = [fbAccounts objectAtIndex:0])){
+            
+            [accountStore renewCredentialsForAccount:account completion:^(ACAccountCredentialRenewResult renewResult, NSError *error) {
+                //we don't actually need to inspect renewResult or error.
+                if (error){
+                    
+                }
+            }];
+        }
+    }
+}
+
 - (void)openFBSession
 {
     NSLog(@"Inside FacebookViewController:openSession");
@@ -121,6 +152,22 @@
        FBSessionState state, NSError *error) {
          [self sessionStateChanged:session state:state error:error];
      }];
+}
+
+- (void)populateUserDetails
+{
+    if (FBSession.activeSession.isOpen) {
+        [[FBRequest requestForMe] startWithCompletionHandler:
+         ^(FBRequestConnection *connection,
+           NSDictionary<FBGraphUser> *user,
+           NSError *error) {
+             if (!error) {
+                 self.fbUserName.text = user.name;
+                 self.fbProfileImage.profileID = user.id;
+                 self.fbUserStatus.text = user.location[@"name"];
+             }
+         }];
+    }
 }
 
 @end
